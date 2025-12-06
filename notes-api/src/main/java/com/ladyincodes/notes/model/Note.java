@@ -1,0 +1,91 @@
+package com.ladyincodes.notes.model;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDate;
+
+@Entity
+@Table (name = "notes")
+public class Note {
+
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @NotNull (message = "Title should not be null")
+    @NotBlank (message = "Title should not be blank")
+    @NotEmpty (message = "Title should not be empty")
+    @Column(nullable = false)
+    private String title;
+
+    @NotNull (message = "Title should not be null")
+    @NotBlank (message = "Title should not be blank")
+    @NotEmpty (message = "Title should not be empty")
+    @Column (columnDefinition = "TEXT")
+    private String content;
+
+    private LocalDate createdAt;
+    private LocalDate updatedAt = null;
+
+
+    public Note(String title, String content, LocalDate createdAt, LocalDate updatedAt) {
+        this.title = title;
+        this.content = content;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public Note(long id, String title, String content, LocalDate createdAt, LocalDate updatedAt) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public Note() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDate getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDate updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+}
