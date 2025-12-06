@@ -40,4 +40,9 @@ public class NotesController {
         return ResponseEntity.status(HttpStatus.CREATED).body(addedNote);
     }
 
+    @PutMapping ("/{id}")
+    public ResponseEntity<NoteRespond> update(@PathVariable Long id, @Valid @RequestBody NoteRequest request) {
+        return noteService.replace(id, request).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+
 }

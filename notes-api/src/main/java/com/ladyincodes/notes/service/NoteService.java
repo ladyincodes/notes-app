@@ -31,4 +31,14 @@ public class NoteService {
     public Optional<NoteRespond> getNoteById(Long id) {
         return repository.findById(id).map(t -> new NoteRespond(t.getId(), t.getTitle(), t.getContent(), t.getCreatedAt(), t.getUpdatedAt()));
     }
+
+    public Optional<NoteRespond> replace(Long id, NoteRequest request) {
+        return repository.findById(id).map(t -> {
+            t.setTitle(request.getTitle());
+            t.setContent(request.getContent());
+            t.setUpdatedAt(LocalDate.now());
+            Note updatedNote = repository.save(t);
+            return new NoteRespond(updatedNote.getId(), updatedNote.getTitle(), updatedNote.getContent(), updatedNote.getCreatedAt(), updatedNote.getUpdatedAt());
+        });
+    }
 }
