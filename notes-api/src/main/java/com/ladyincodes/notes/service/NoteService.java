@@ -7,7 +7,7 @@ import com.ladyincodes.notes.repository.NotesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +17,7 @@ public class NoteService {
     public NotesRepository repository;
 
     public NoteRespond addNote(NoteRequest req) {
-        Note newNote = new Note(req.title, req.content, LocalDate.now(), null);
+        Note newNote = new Note(req.getTitle(), req.getContent(), LocalDateTime.now(), null);
         Note addedNote = repository.save(newNote);
 
         return new NoteRespond(addedNote.getId(), addedNote.getTitle(), addedNote.getContent(), addedNote.getCreatedAt(), addedNote.getUpdatedAt());
@@ -36,7 +36,7 @@ public class NoteService {
         return repository.findById(id).map(t -> {
             t.setTitle(request.getTitle());
             t.setContent(request.getContent());
-            t.setUpdatedAt(LocalDate.now());
+            t.setUpdatedAt(LocalDateTime.now());
             Note updatedNote = repository.save(t);
             return new NoteRespond(updatedNote.getId(), updatedNote.getTitle(), updatedNote.getContent(), updatedNote.getCreatedAt(), updatedNote.getUpdatedAt());
         });

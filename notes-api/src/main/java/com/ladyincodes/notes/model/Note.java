@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table (name = "notes")
@@ -27,18 +27,18 @@ public class Note {
     @Column (columnDefinition = "TEXT")
     private String content;
 
-    private LocalDate createdAt;
-    private LocalDate updatedAt = null;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt = null;
 
 
-    public Note(String title, String content, LocalDate createdAt, LocalDate updatedAt) {
+    public Note(String title, String content, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.title = title;
         this.content = content;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public Note(long id, String title, String content, LocalDate createdAt, LocalDate updatedAt) {
+    public Note(long id, String title, String content, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -73,19 +73,19 @@ public class Note {
         this.content = content;
     }
 
-    public LocalDate getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDate getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDate updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 }

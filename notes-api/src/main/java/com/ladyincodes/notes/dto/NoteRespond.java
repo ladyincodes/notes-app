@@ -1,18 +1,18 @@
 package com.ladyincodes.notes.dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class NoteRespond {
-    public long id;
-    public String title;
-    public String content;
-    public LocalDate createdAt;
-    public LocalDate updatedAt;
+    private long id;
+    private String title;
+    private String content;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public NoteRespond() {
     }
 
-    public NoteRespond(long id, String title, String content, LocalDate createdAt, LocalDate updatedAt) {
+    public NoteRespond(long id, String title, String content, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -44,19 +44,19 @@ public class NoteRespond {
         this.content = content;
     }
 
-    public LocalDate getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDate getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDate updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 }
