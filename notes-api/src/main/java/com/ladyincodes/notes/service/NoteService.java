@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NoteService {
@@ -19,7 +21,14 @@ public class NoteService {
         Note addedNote = repository.save(newNote);
 
         return new NoteRespond(addedNote.getId(), addedNote.getTitle(), addedNote.getContent(), addedNote.getCreatedAt(), addedNote.getUpdatedAt());
+    }
 
+    public List<NoteRespond> getAllNotes() {
+        return repository.findAll().stream().map(
+                t -> new NoteRespond(t.getId(), t.getTitle(), t.getContent(), t.getCreatedAt(), t.getUpdatedAt())).toList();
+    }
 
+    public Optional<NoteRespond> getNoteById(Long id) {
+        return repository.findById(id).map(t -> new NoteRespond(t.getId(), t.getTitle(), t.getContent(), t.getCreatedAt(), t.getUpdatedAt()));
     }
 }
