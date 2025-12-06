@@ -45,4 +45,11 @@ public class NotesController {
         return noteService.replace(id, request).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    @DeleteMapping ("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        return (noteService.delete(id)) ?
+                ResponseEntity.ok().build() :
+                ResponseEntity.notFound().build();
+    }
+
 }

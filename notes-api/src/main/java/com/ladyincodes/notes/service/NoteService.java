@@ -41,4 +41,10 @@ public class NoteService {
             return new NoteRespond(updatedNote.getId(), updatedNote.getTitle(), updatedNote.getContent(), updatedNote.getCreatedAt(), updatedNote.getUpdatedAt());
         });
     }
+
+    public boolean delete(Long id) {
+        if (!repository.existsById(id)) return false;
+        repository.deleteById(id);
+        return true;
+    }
 }
