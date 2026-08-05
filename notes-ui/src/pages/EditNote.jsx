@@ -59,6 +59,7 @@ export default function EditNote() {
               type="submit"
               variant="contained"
               style={{ marginTop: "10px" }}
+              fullWidth
             >
               Update
             </Button>
