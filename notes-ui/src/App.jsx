@@ -9,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<NotesList />} />
         <Route path="/create" element={<CreateNote />} />
-        <Route path="/edit" element={<EditNote />} />
+        <Route path="/edit/:id" element={<EditNote />} />
       </Routes>
     </BrowserRouter>
   );
